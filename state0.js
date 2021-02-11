@@ -1,15 +1,35 @@
-var demo = {};
+var demo = {}, centerX = 1500/2, centerY = 1000/2, girl, speed = 4;
 demo.state0 = function(){};
 demo.state0.prototype = {
-    preload: function(){},
+    preload: function(){
+        game.load.image('girl', 'assets/sprites/girl.png');
+    },
     create: function(){
         game.stage.backgroundColor = '#FF6C6C'
         console.log('state0');
         addChangeStateEventListeners();
-        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
+        
+        girl = game.add.sprite(centerX, centerY,'girl');
+        girl.anchor.setTo(0.5,0.5);
         
     },
-    update: function(){}
+    update: function(){
+        
+        if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
+            girl.x += 4;
+        }
+        else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+            girl.x -= 4;
+        }     
+        
+        if(game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+            girl.y -= 4;
+        }
+        else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
+            girl.y += 4;
+        }
+    }
 };
 
 function changeState(i, stateNum) {
