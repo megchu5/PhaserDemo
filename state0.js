@@ -10,7 +10,6 @@ demo.state0.prototype = {
     create: function(){
         game.physics.startSystem(Phaser.Physics.ARCADE); // initialize the physics engine for the game
         game.stage.backgroundColor = '#FF6C6C' // sets the background color of the state
-        console.log('state0'); // allows us to see that the state has switched to state 0
         
         /* anything created in the demo object is a LOCAL variable. Therefore, instead of listing commands to change for every other state in each state, we can make a function outside of the demo which is global so 
         that we can just call the function in each state instead of repeating a bunch of code. */
@@ -40,10 +39,7 @@ demo.state0.prototype = {
         First and second args: origin of where the rectangle is drawn,
         Third arg: width of the rectangle
         Fourth arg: height of the rectangle */
-        
 
-        
-    
     },
     update: function(){
         
@@ -77,6 +73,7 @@ demo.state0.prototype = {
 };
 
 function changeState(i, stateNum) { // changes the state
+    console.log('state'+stateNum);// allows us to see that the state has switched states
     game.state.start('state' + stateNum);
 }
 
